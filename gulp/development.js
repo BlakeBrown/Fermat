@@ -13,25 +13,10 @@ var gulp = require('gulp'),
     sass: ['**/public/**/css/*.scss']
   };
 
-var defaultTasks = ['clean', 'jshint', 'less', 'csslint', 'devServe', 'watch'];
+var defaultTasks = ['clean', 'less', 'devServe', 'watch'];
 
 gulp.task('env:development', function () {
   process.env.NODE_ENV = 'development';
-});
-
-gulp.task('jshint', function () {
-  return gulp.src(paths.js)
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.jshint.reporter('fail'))
-    .pipe(count('jshint', 'files lint free'));
-});
-
-gulp.task('csslint', function () {
-  return gulp.src(paths.css)
-    .pipe(plugins.csslint('.csslintrc'))
-    .pipe(plugins.csslint.reporter())
-    .pipe(count('csslint', 'files lint free'));
 });
 
 gulp.task('less', function() {
